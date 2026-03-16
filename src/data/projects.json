@@ -1,0 +1,74 @@
+[
+  {
+    "id": "sarvsambhav",
+    "title": "SarvSambhav",
+    "subtitle": "Website crafted for NGO SarvSambhav, engaged in education and holistic community development.",
+    "description": "SarvSambhav is a website developed to provide a strong digital presence for the NGO SarvSambhav, an organization dedicated to improving education and supporting holistic community development. The platform serves as an online hub where visitors can learn about the organization’s mission, values, and the initiatives it undertakes to empower communities.\n\nThe website highlights the NGO’s educational programs, social initiatives, and outreach activities aimed at creating meaningful and sustainable change. It is designed to clearly communicate the impact of SarvSambhav’s work while making information accessible to supporters, volunteers, and the broader public.\n\nWith a modern and user-friendly interface, the platform helps increase awareness about the organization’s efforts, encourages community participation, and provides a space where people can connect with and support SarvSambhav’s mission of empowering communities and transforming lives.",
+    "bannerImage": "/uploads/projects/1773697224953-vp9kwd.jpg",
+    "complementaryImages": [],
+    "priority": 6,
+    "tags": [],
+    "githubUrl": "",
+    "liveUrl": "https://www.sarvsambhav.org/"
+  },
+  {
+    "id": "aura-charge",
+    "title": "Aura Charge",
+    "subtitle": "Miniature road model demonstrating dynamic wireless vehicle charging technology.",
+    "description": "AuraCharge is a miniature demonstration project that showcases the concept of dynamic vehicle charging through a specialized road surface. The model illustrates how electric vehicles can receive power either while moving or when stationary on a charging-enabled road. This concept represents an innovative approach to solving one of the major challenges of electric mobility—frequent charging stops.\n\nThe project uses a scaled-down vehicle and a specially designed road model to simulate embedded or wireless charging technology. When the vehicle moves across or stops on the charging surface, power is transferred to the vehicle, demonstrating how future smart roads could continuously supply energy to electric cars.\n\nAuraCharge aims to visualize how integrated charging infrastructure could transform transportation by reducing dependency on traditional charging stations, extending vehicle range, and enabling a more seamless electric mobility ecosystem.",
+    "bannerImage": "/uploads/projects/1773697158502-9qub44.jpg",
+    "complementaryImages": [],
+    "priority": 5,
+    "tags": [],
+    "githubUrl": "https://github.com/pranabsssssss/aura-charge",
+    "liveUrl": ""
+  },
+  {
+    "id": "project-1773696942968",
+    "title": "Academic Elitez (Under Development)",
+    "subtitle": "Education portal focused on clarity and smart delivery for enhanced learning experiences.",
+    "description": "Academic Elitez is a developing education platform designed to deliver structured learning with clarity, accessibility, and modern digital tools. The platform focuses on creating an organized learning environment where students can easily access educational resources, study materials, and guided academic support.\n\nThe project aims to simplify the way students interact with learning content by presenting information in a clear and intuitive format. By combining a modern interface with structured educational content, Academic Elitez intends to improve focus, comprehension, and overall learning efficiency.\n\nCurrently under development, the platform is being built to support future expansion, including additional learning resources, interactive features, and improved content delivery systems. The goal of Academic Elitez is to create a reliable digital learning space that enhances the academic experience for students.",
+    "bannerImage": "/uploads/projects/1773696961769-r01w90.jpg",
+    "complementaryImages": [],
+    "priority": 4,
+    "tags": [],
+    "githubUrl": "",
+    "liveUrl": "https://acelite.me/"
+  },
+  {
+    "id": "typester",
+    "title": "Typester",
+    "subtitle": "Interactive typing speed test application with real-time WPM tracking and accuracy metrics.",
+    "description": "Typester is an interactive web-based typing speed test application designed to help users measure and improve their typing skills. The platform provides real-time tracking of words per minute (WPM), typing accuracy, and performance metrics, allowing users to evaluate their typing efficiency instantly.\n\nThe application offers a clean and engaging interface where users can practice typing through structured text prompts while receiving immediate feedback on their speed and accuracy. This helps users identify mistakes, improve consistency, and gradually increase their typing speed through repeated practice.\n\nBuilt as a lightweight web application using JavaScript, Typester focuses on responsiveness and smooth performance, ensuring a seamless typing experience across different devices and browsers. It serves as a practical tool for students, professionals, and anyone looking to enhance their typing proficiency.",
+    "bannerImage": "/uploads/projects/1773696807732-vi5zli.jpg",
+    "complementaryImages": [],
+    "priority": 3,
+    "tags": [],
+    "githubUrl": "https://github.com/Pranabsssssss/Typester",
+    "liveUrl": "https://typetest.pranab.tech/"
+  },
+  {
+    "id": "yuzone-music",
+    "title": "Yuzone Music",
+    "subtitle": "Music Streaming Without Ads",
+    "description": "Yuzone Music is a modern music streaming application designed to provide users with uninterrupted access to a vast library of songs across multiple genres and artists. The platform focuses on delivering a smooth and distraction-free listening experience, allowing users to enjoy music without interruptions.\n\nWith a clean and intuitive interface, Yuzone Music makes it easy to discover, play, and manage music effortlessly. Users can explore different tracks, build playlists, and enjoy continuous streaming without the limitations often found in traditional music platforms.\n\nBuilt with performance and simplicity in mind, Yuzone Music aims to create a seamless audio experience where listeners can focus purely on music, enjoying high-quality streaming anytime and anywhere.",
+    "bannerImage": "/uploads/projects/1773696614707-zoo91t.png",
+    "complementaryImages": [],
+    "priority": 2,
+    "tags": [],
+    "githubUrl": "https://github.com/yuzonestudios/yuzonemusic",
+    "liveUrl": "https://music.yuzone.me/"
+  },
+  {
+    "id": "attendify",
+    "title": "Attendify",
+    "subtitle": "Smart Attendance System",
+    "description": "Attendify is a smart attendance management system designed to simplify and automate the traditional attendance process. The system focuses on accuracy, efficiency, and real-time tracking, reducing the need for manual registers and human intervention. It allows institutions or organizations to monitor attendance digitally while maintaining a structured and reliable record system.\n\nThe platform is built to streamline attendance collection, storage, and analysis. It enables quick identification of attendance patterns, improves transparency, and minimizes errors that commonly occur in manual systems. With an intuitive interface and automated workflows, Attendify helps administrators manage attendance data more effectively while saving time and effort.\n\nDesigned with scalability in mind, Attendify can be adapted for schools, coaching institutes, or organizations that require a modern and efficient attendance tracking solution.",
+    "bannerImage": "/uploads/projects/1773696490058-ufrz8m.png",
+    "complementaryImages": [],
+    "priority": 1,
+    "tags": [],
+    "githubUrl": "https://github.com/Pranabsssssss/Attendify",
+    "liveUrl": "https://attendify.reposphere.tech/"
+  }
+]

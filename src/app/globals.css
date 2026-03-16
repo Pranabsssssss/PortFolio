@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-serif-custom);
+}
+
+@layer base {
+  :root {
+    --background: #09090b;
+    --foreground: #fafafa;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    overflow-x: hidden;
+  }
+}
+
+/* Instant CSS cover to prevent FOUC before React hydration */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  background-color: #000;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+/* Once the preloader React component mounts, it takes over visibility.
+   The CSS cover stays opaque — the React preloader is z-100 on top.
+   We do NOT fade the ::before yet, because content underneath would peek through. */
+body[data-preloader-ready]::before {
+  /* Still opaque, but lower z than React preloader (z-100).
+     The React curtains handle the visual reveal. */
+  opacity: 1;
+}
+
+/* Only when the preloader is fully done (curtains open, content revealed),
+   fade out and remove the CSS cover. */
+body[data-preloader-done]::before {
+  opacity: 0;
+  pointer-events: none;
+  animation: removeCover 0s 0.3s forwards;
+}
+
+@keyframes removeCover {
+  to { display: none; }
+}
+
+::selection {
+  background-color: rgba(168, 85, 247, 0.3);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #09090b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c084fc;
+}
+
+@media (pointer: fine) {
+  body, a, button, input, select, textarea {
+    cursor: none !important;
+  }
+}
