@@ -11,7 +11,7 @@ const Footer = () => {
   if (pathname.startsWith("/admin")) return null;
 
   return (
-    <footer className="border-t border-zinc-800 bg-black/50 backdrop-blur-sm pt-12 pb-8 mt-20 text-zinc-400">
+    <footer className="border-t border-white/5 bg-[#09090b]/80 backdrop-blur-xl pt-12 pb-8 mt-20 text-zinc-400">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-8">
           

@@ -81,7 +81,7 @@ const Navbar = () => {
         className={cn(
           "fixed top-6 left-1/2 -translate-x-1/2 z-50 transition-colors duration-300 rounded-full border",
           scrolled
-            ? "bg-black/60 backdrop-blur-xl border-zinc-800 shadow-[0_0_30px_rgba(168,85,247,0.15)] py-2.5 px-6"
+            ? "bg-[#09090b]/80 backdrop-blur-xl border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.3)] py-2.5 px-6"
             : "bg-transparent border-transparent py-3 px-6"
         )}
       >

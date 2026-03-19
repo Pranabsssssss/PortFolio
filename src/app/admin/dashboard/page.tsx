@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Project, ProjectPriority } from "@/types/models";
 import { FiPlus, FiTrash2, FiSave, FiEdit2, FiGithub, FiUpload, FiMenu, FiX, FiImage } from "react-icons/fi";
 import { Reorder } from "framer-motion";
+import ExpandableImage from "@/components/ui/ExpandableImage";
 
 export default function ProjectsDashboard() {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -159,6 +160,64 @@ export default function ProjectsDashboard() {
                         className="w-full bg-black border border-zinc-800 rounded-lg px-3 py-2 text-white text-sm" />
                     </div>
 
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-semibold text-zinc-400 mb-1">Start Date</label>
+                        <input type="date" value={formData.startDate || ""} onChange={e => setFormData({ ...formData, startDate: e.target.value })}
+                          className="w-full bg-black border border-zinc-800 rounded-lg px-3 py-2 text-white text-sm" />
+                      </div>
+                      <div>
+                        <label className="flex items-center justify-between text-xs font-semibold text-zinc-400 mb-1">
+                          <span>End Date</span>
+                          <label className="flex items-center gap-1 cursor-pointer">
+                            <input type="checkbox" checked={formData.endDate === "Present"} onChange={e => setFormData({ ...formData, endDate: e.target.checked ? "Present" : "" })} className="w-3 h-3 accent-purple-600" />
+                            <span className="text-[10px]">Ongoing</span>
+                          </label>
+                        </label>
+                        <input type="date" value={formData.endDate === "Present" ? "" : (formData.endDate || "")} disabled={formData.endDate === "Present"} onChange={e => setFormData({ ...formData, endDate: e.target.value })}
+                          className="w-full bg-black border border-zinc-800 rounded-lg px-3 py-2 text-white text-sm disabled:opacity-50" />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-semibold text-zinc-400 mb-1">Tags (comma separated)</label>
+                      <input type="text" value={formData.tags?.join(", ") || ""} onChange={e => setFormData({ ...formData, tags: e.target.value.split(",").map(t => t.trim()).filter(Boolean) })}
+                        placeholder="e.g. Next.js, AI, Robotics"
+                        className="w-full bg-black border border-zinc-800 rounded-lg px-3 py-2 text-white text-sm" />
+                    </div>
+
+                    {/* Technologies */}
+                    <div>
+                      <div className="flex justify-between items-center mb-2">
+                        <label className="block text-xs font-semibold text-zinc-400">Technologies</label>
+                        <button type="button" onClick={() => setFormData({ ...formData, technologies: [...(formData.technologies || []), { name: "", iconUrl: "" }] })} className="text-[10px] bg-zinc-800 hover:bg-zinc-700 px-2 py-1 rounded text-white transition-colors">+ Add Tech</button>
+                      </div>
+                      <div className="space-y-2">
+                        {(formData.technologies || []).map((tech, idx) => (
+                          <div key={idx} className="flex gap-2 items-center bg-zinc-900 border border-zinc-800 p-2 rounded-lg">
+                            <div className="w-8 h-8 rounded shrink-0 bg-black border border-zinc-700 flex items-center justify-center overflow-hidden">
+                              {tech.iconUrl ? <img src={tech.iconUrl} alt="" className="w-full h-full object-cover" /> : <FiImage className="text-zinc-600" size={12} />}
+                            </div>
+                            <input type="text" placeholder="Icon URL" value={tech.iconUrl} onChange={e => {
+                                const newTechs = [...(formData.technologies || [])];
+                                newTechs[idx] = { ...tech, iconUrl: e.target.value };
+                                setFormData({ ...formData, technologies: newTechs });
+                            }} className="w-24 shrink-0 bg-black border border-zinc-800 rounded px-2 py-1.5 text-white text-xs" />
+                            <input type="text" placeholder="Tech name" value={tech.name} onChange={e => {
+                                const newTechs = [...(formData.technologies || [])];
+                                newTechs[idx] = { ...tech, name: e.target.value };
+                                setFormData({ ...formData, technologies: newTechs });
+                            }} className="flex-grow bg-black border border-zinc-800 rounded px-2 py-1.5 text-white text-xs" />
+                            <button type="button" onClick={() => {
+                                const newTechs = [...(formData.technologies || [])];
+                                newTechs.splice(idx, 1);
+                                setFormData({ ...formData, technologies: newTechs });
+                            }} className="p-1.5 text-zinc-500 hover:text-red-500 hover:bg-red-500/10 rounded transition-colors"><FiTrash2 size={12} /></button>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
                     <div>
                       <label className="block text-xs font-semibold text-zinc-400 mb-1">Description</label>
                       <textarea value={formData.description || ""} onChange={e => setFormData({ ...formData, description: e.target.value })}
@@ -171,7 +230,7 @@ export default function ProjectsDashboard() {
                       <div className="flex gap-4 items-start">
                         {formData.bannerImage ? (
                           <div className="w-32 h-20 rounded-lg overflow-hidden border border-zinc-700 shrink-0">
-                            <img src={formData.bannerImage} alt="" className="w-full h-full object-cover" />
+                            <ExpandableImage src={formData.bannerImage} alt="" wrapperClassName="w-full h-full" className="w-full h-full object-cover" />
                           </div>
                         ) : (
                           <div className="w-32 h-20 rounded-lg bg-zinc-800 border border-zinc-700 flex items-center justify-center text-zinc-600 text-xs shrink-0">No Image</div>
@@ -189,7 +248,7 @@ export default function ProjectsDashboard() {
                       <div className="flex flex-wrap gap-3 mb-3">
                         {(formData.complementaryImages || []).map((img, i) => (
                           <div key={i} className="relative w-24 h-16 rounded-lg overflow-hidden border border-zinc-700 group">
-                            <img src={img} alt="" className="w-full h-full object-cover" />
+                            <ExpandableImage src={img} alt="" wrapperClassName="w-full h-full" className="w-full h-full object-cover" />
                             <button onClick={() => removeComplementaryImage(i)}
                               className="absolute top-1 right-1 p-0.5 bg-red-600 rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity">
                               <FiX size={12} />
@@ -199,7 +258,7 @@ export default function ProjectsDashboard() {
                       </div>
                       <label className="inline-flex items-center gap-2 bg-zinc-800 hover:bg-zinc-700 text-white px-4 py-2.5 rounded-lg cursor-pointer transition-colors text-sm">
                         <FiImage /> Add Images
-                        <input type="file" accept="image/*" multiple className="hidden" onChange={e => { if (e.target.files?.length) handleComplementaryUpload(e.target.files); }} />
+                        <input type="file" accept="image/*,video/mp4,video/webm" multiple className="hidden" onChange={e => { if (e.target.files?.length) handleComplementaryUpload(e.target.files); }} />
                       </label>
                     </div>
 
@@ -235,7 +294,7 @@ export default function ProjectsDashboard() {
                     <div className="cursor-grab active:cursor-grabbing text-zinc-600 hover:text-zinc-400 shrink-0"><FiMenu size={20} /></div>
                     {project.bannerImage ? (
                       <div className="w-14 h-14 rounded-lg bg-zinc-800 shrink-0 overflow-hidden border border-zinc-700">
-                        <img src={project.bannerImage} alt="" className="w-full h-full object-cover" />
+                        <ExpandableImage src={project.bannerImage} alt="" wrapperClassName="w-full h-full" className="w-full h-full object-cover" />
                       </div>
                     ) : (
                       <div className="w-14 h-14 rounded-lg bg-zinc-800 shrink-0 flex items-center justify-center text-zinc-600 border border-zinc-700 text-[10px]">No Img</div>

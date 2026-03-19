@@ -54,7 +54,7 @@ const Preloader = () => {
           <motion.div
             initial={{ y: "0%" }}
             exit={{ y: "-100%", transition: { duration: 1, ease: [0.76, 0, 0.24, 1], delay: 0.2 } }}
-            className="absolute top-0 left-0 w-full h-1/2 bg-black z-40 flex flex-col justify-end"
+            className="absolute top-0 left-0 w-full h-1/2 bg-[#09090b] z-40 flex flex-col justify-end"
           >
             <motion.div 
               initial={{ scaleX: 0 }} 
@@ -68,7 +68,7 @@ const Preloader = () => {
           <motion.div
             initial={{ y: "0%" }}
             exit={{ y: "100%", transition: { duration: 1, ease: [0.76, 0, 0.24, 1], delay: 0.2 } }}
-            className="absolute bottom-0 left-0 w-full h-1/2 bg-black z-40 flex flex-col justify-start"
+            className="absolute bottom-0 left-0 w-full h-1/2 bg-[#09090b] z-40 flex flex-col justify-start"
           >
             <motion.div 
               initial={{ scaleX: 0 }} 

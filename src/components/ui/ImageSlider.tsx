@@ -68,17 +68,34 @@ const ImageSlider = ({ images, title = "Gallery" }: ImageSliderProps) => {
         <h2 className="text-2xl font-bold text-white">{title}</h2>
         <div className="relative rounded-2xl overflow-hidden border border-zinc-800 aspect-video bg-zinc-900 group">
           <AnimatePresence mode="wait">
-            <motion.img
-              key={current}
-              src={images[current]}
-              alt={`Slide ${current + 1}`}
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -50 }}
-              transition={{ duration: 0.3 }}
-              className="w-full h-full object-cover cursor-pointer"
-              onClick={() => setLightboxOpen(true)}
-            />
+            {images[current].match(/\.(mp4|webm)$/i) ? (
+              <motion.video
+                key={current}
+                src={images[current]}
+                autoPlay
+                muted
+                loop
+                playsInline
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -50 }}
+                transition={{ duration: 0.3 }}
+                className="w-full h-full object-cover cursor-pointer bg-black"
+                onClick={() => setLightboxOpen(true)}
+              />
+            ) : (
+              <motion.img
+                key={current}
+                src={images[current]}
+                alt={`Slide ${current + 1}`}
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -50 }}
+                transition={{ duration: 0.3 }}
+                className="w-full h-full object-cover cursor-pointer"
+                onClick={() => setLightboxOpen(true)}
+              />
+            )}
           </AnimatePresence>
 
           {/* Expand button */}

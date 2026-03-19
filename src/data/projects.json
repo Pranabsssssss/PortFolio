@@ -7,9 +7,19 @@
     "bannerImage": "/uploads/projects/1773697224953-vp9kwd.jpg",
     "complementaryImages": [],
     "priority": 6,
-    "tags": [],
+    "tags": [
+      "nn"
+    ],
     "githubUrl": "",
-    "liveUrl": "https://www.sarvsambhav.org/"
+    "liveUrl": "https://www.sarvsambhav.org/",
+    "endDate": "Present",
+    "startDate": "2025-03-19",
+    "technologies": [
+      {
+        "name": "sarvsambhav",
+        "iconUrl": "/uploads/projects/1773881521137-rricrr.jpg"
+      }
+    ]
   },
   {
     "id": "aura-charge",

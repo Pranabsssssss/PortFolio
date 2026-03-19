@@ -29,7 +29,7 @@ body::before {
   position: fixed;
   inset: 0;
   z-index: 99;
-  background-color: #000;
+  background-color: #09090b;
   pointer-events: none;
   opacity: 1;
   transition: opacity 0.3s ease;
@@ -79,7 +79,7 @@ body[data-preloader-done]::before {
 }
 
 @media (pointer: fine) {
-  body, a, button, input, select, textarea {
+  * {
     cursor: none !important;
   }
 }

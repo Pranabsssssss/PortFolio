@@ -27,7 +27,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   if (!isAuthenticated) return null; // Prevent flash of content
 
   return (
-    <div className="min-h-screen bg-black flex">
+    <div className="h-screen w-full overflow-hidden bg-black flex">
       {/* Sidebar */}
       <aside className="w-64 bg-zinc-900 border-r border-zinc-800 flex flex-col hidden md:flex">
         <div className="p-6 border-b border-zinc-800 flex items-center gap-3">

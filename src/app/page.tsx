@@ -2,9 +2,10 @@ import React from "react";
 import HeroSection from "@/components/home/HeroSection";
 import AboutPreview from "@/components/home/AboutPreview";
 import FeaturedProjects from "@/components/home/FeaturedProjects";
-import SkillsSection from "@/components/home/SkillsSection";
+import TechStack from "@/components/home/TechStack";
 import AchievementsPreview from "@/components/home/AchievementsPreview";
 import SupportContactPreview from "@/components/home/SupportContactPreview";
+import Testimonials from "@/components/home/Testimonials";
 
 export default function Home() {
   return (
@@ -12,8 +13,9 @@ export default function Home() {
       <HeroSection />
       <AboutPreview />
       <FeaturedProjects />
-      <SkillsSection />
+      <TechStack />
       <AchievementsPreview />
+      <Testimonials />
       <SupportContactPreview />
     </div>
   );

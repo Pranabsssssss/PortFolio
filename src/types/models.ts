@@ -9,6 +9,9 @@ export interface Project {
   complementaryImages: string[]; // Additional gallery images
   priority: ProjectPriority; // For sorting on homepage (higher is more important)
   tags: string[]; // e.g., ["AI", "Hardware", "React"]
+  technologies?: { name: string; iconUrl: string }[];
+  startDate?: string; // YYYY-MM-DD
+  endDate?: string; // YYYY-MM-DD or "Present"
   githubUrl?: string;
   liveUrl?: string;
 }

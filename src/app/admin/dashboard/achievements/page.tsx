@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Achievement, AchievementType } from "@/types/models";
 import { FiPlus, FiTrash2, FiSave, FiEdit2, FiUpload, FiMenu, FiX, FiImage } from "react-icons/fi";
 import { Reorder } from "framer-motion";
+import ExpandableImage from "@/components/ui/ExpandableImage";
 
 export default function AchievementsDashboard() {
   const [achievements, setAchievements] = useState<Achievement[]>([]);
@@ -186,7 +187,7 @@ export default function AchievementsDashboard() {
                       <div className="flex gap-4 items-start">
                         {formData.bannerImage ? (
                           <div className="w-32 h-20 rounded-lg overflow-hidden border border-zinc-700 shrink-0">
-                            <img src={formData.bannerImage} alt="" className="w-full h-full object-cover" />
+                            <ExpandableImage src={formData.bannerImage} alt="" wrapperClassName="w-full h-full" className="w-full h-full object-cover" />
                           </div>
                         ) : (
                           <div className="w-32 h-20 rounded-lg bg-zinc-800 border border-zinc-700 flex items-center justify-center text-zinc-600 text-xs shrink-0">No Image</div>
@@ -204,7 +205,7 @@ export default function AchievementsDashboard() {
                       <div className="flex flex-wrap gap-3 mb-3">
                         {(formData.complementaryImages || []).map((img, i) => (
                           <div key={i} className="relative w-24 h-16 rounded-lg overflow-hidden border border-zinc-700 group">
-                            <img src={img} alt="" className="w-full h-full object-cover" />
+                            <ExpandableImage src={img} alt="" wrapperClassName="w-full h-full" className="w-full h-full object-cover" />
                             <button onClick={() => removeComplementaryImage(i)}
                               className="absolute top-1 right-1 p-0.5 bg-red-600 rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity">
                               <FiX size={12} />
@@ -231,7 +232,7 @@ export default function AchievementsDashboard() {
                     <div className="cursor-grab active:cursor-grabbing text-zinc-600 hover:text-zinc-400 shrink-0"><FiMenu size={20} /></div>
                     {item.bannerImage ? (
                       <div className="w-14 h-14 rounded-lg bg-zinc-800 shrink-0 overflow-hidden border border-zinc-700">
-                        <img src={item.bannerImage} alt="" className="w-full h-full object-cover" />
+                        <ExpandableImage src={item.bannerImage} alt="" wrapperClassName="w-full h-full" className="w-full h-full object-cover" />
                       </div>
                     ) : (
                       <div className="w-14 h-14 rounded-lg bg-zinc-800 shrink-0 flex items-center justify-center text-zinc-600 border border-zinc-700 text-[10px]">No Img</div>

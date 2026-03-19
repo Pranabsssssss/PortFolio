@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { FiArrowLeft, FiAward } from "react-icons/fi";
 import ImageSlider from "@/components/ui/ImageSlider";
+import ExpandableImage from "@/components/ui/ExpandableImage";
 
 import achievementsData from "@/data/achievements.json";
 import { Achievement } from "@/types/models";
@@ -27,12 +28,12 @@ const Layout1 = ({ item }: { item: Achievement }) => (
   <div className="space-y-12">
     <div className="w-full h-[50vh] min-h-[400px] rounded-3xl overflow-hidden border border-zinc-800 relative">
       {item.bannerImage ? (
-        <img src={item.bannerImage} alt={item.name} className="w-full h-full object-cover" />
+        <ExpandableImage src={item.bannerImage} alt={item.name} wrapperClassName="w-full h-full" className="w-full h-full object-cover" />
       ) : (
         <div className="w-full h-full bg-zinc-900 flex items-center justify-center text-zinc-600"><FiAward size={48} /></div>
       )}
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
-      <div className="absolute bottom-8 left-8 right-8">
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent pointer-events-none" />
+      <div className="absolute bottom-8 left-8 right-8 pointer-events-none">
         <MetaBadge item={item} />
         <h1 className="text-4xl md:text-6xl font-bold text-white mb-3 mt-3 drop-shadow-lg">{item.name}</h1>
         <p className="text-xl text-zinc-300">{item.subtitle}</p>
@@ -56,7 +57,7 @@ const Layout2 = ({ item }: { item: Achievement }) => (
       </div>
       <div className="h-[400px] rounded-3xl overflow-hidden border border-zinc-800">
         {item.bannerImage ? (
-          <img src={item.bannerImage} alt={item.name} className="w-full h-full object-cover" />
+          <ExpandableImage src={item.bannerImage} alt={item.name} wrapperClassName="w-full h-full" className="w-full h-full object-cover" />
         ) : (
           <div className="w-full h-full bg-zinc-900 flex items-center justify-center text-zinc-600"><FiAward size={48} /></div>
         )}
@@ -75,7 +76,7 @@ const Layout3 = ({ item }: { item: Achievement }) => (
     </div>
     <div className="w-full h-[50vh] min-h-[350px] rounded-3xl overflow-hidden border border-zinc-800">
       {item.bannerImage ? (
-        <img src={item.bannerImage} alt={item.name} className="w-full h-full object-cover" />
+        <ExpandableImage src={item.bannerImage} alt={item.name} wrapperClassName="w-full h-full" className="w-full h-full object-cover" />
       ) : (
         <div className="w-full h-full bg-zinc-900 flex items-center justify-center text-zinc-600"><FiAward size={48} /></div>
       )}
@@ -91,12 +92,14 @@ const Layout4 = ({ item }: { item: Achievement }) => (
   <div className="space-y-12">
     <div className="relative rounded-3xl overflow-hidden border border-zinc-800 min-h-[500px] flex items-end">
       {item.bannerImage ? (
-        <img src={item.bannerImage} alt={item.name} className="absolute inset-0 w-full h-full object-cover" />
+        <div className="absolute inset-0 w-full h-full">
+          <ExpandableImage src={item.bannerImage} alt={item.name} wrapperClassName="w-full h-full" className="w-full h-full object-cover" />
+        </div>
       ) : (
         <div className="absolute inset-0 bg-zinc-900" />
       )}
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/20" />
-      <div className="relative z-10 p-8 md:p-12 space-y-4 max-w-3xl">
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/20 pointer-events-none" />
+      <div className="relative z-10 p-8 md:p-12 space-y-4 max-w-3xl pointer-events-none">
         <MetaBadge item={item} />
         <h1 className="text-4xl md:text-5xl font-bold text-white">{item.name}</h1>
         <p className="text-lg text-purple-300 font-medium">{item.subtitle}</p>
@@ -112,7 +115,7 @@ const Layout5 = ({ item }: { item: Achievement }) => (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
       <div className="md:col-span-2 h-[400px] rounded-3xl overflow-hidden border border-zinc-800">
         {item.bannerImage ? (
-          <img src={item.bannerImage} alt={item.name} className="w-full h-full object-cover" />
+          <ExpandableImage src={item.bannerImage} alt={item.name} wrapperClassName="w-full h-full" className="w-full h-full object-cover" />
         ) : (
           <div className="w-full h-full bg-zinc-900 flex items-center justify-center text-zinc-600"><FiAward size={48} /></div>
         )}

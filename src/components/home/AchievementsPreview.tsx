@@ -3,7 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { FiArrowRight, FiAward } from "react-icons/fi";
+import { FiArrowRight } from "react-icons/fi";
 
 import achievementsData from "@/data/achievements.json";
 import { Achievement } from "@/types/models";
@@ -11,70 +11,102 @@ import { Achievement } from "@/types/models";
 const allAchievements: Achievement[] = achievementsData as Achievement[];
 const topAchievements = [...allAchievements].sort((a, b) => b.priority - a.priority).slice(0, 3);
 
+const AchievementCard = ({ item, index }: { item: Achievement, index: number }) => {
+  return (
+    <Link href={`/achievements/${item.id}`} className="group relative block h-full">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: index * 0.1 }}
+        className="relative h-full overflow-hidden rounded-[2rem] border border-white/5 bg-zinc-900/10 backdrop-blur-md group-hover:border-purple-500/30 transition-all duration-500 flex flex-col"
+        style={{ willChange: "transform" }}
+      >
+        {/* Immersive Image Header */}
+        <div className="relative h-56 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-transparent to-transparent z-10" />
+          {item.bannerImage ? (
+            <img 
+              src={item.bannerImage} 
+              alt={item.name} 
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+            />
+          ) : (
+            <div className="w-full h-full bg-zinc-800 flex items-center justify-center text-zinc-600">
+               <span className="text-xs font-bold tracking-widest uppercase opacity-20 italic">No Visual</span>
+            </div>
+          )}
+          
+          <div className="absolute top-4 left-4 z-20">
+            <span className="px-3 py-1 bg-black/50 backdrop-blur-sm border border-white/10 rounded-full text-[10px] font-black text-white uppercase tracking-[0.2em]">
+               {item.type}
+            </span>
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="p-8 pb-10 flex flex-col flex-grow">
+          <div className="mb-6">
+            <span className="text-[10px] font-black text-purple-400 uppercase tracking-[0.3em] mb-2 block">
+              {item.date}
+            </span>
+            <h3 className="text-2xl font-bold text-white leading-tight group-hover:text-purple-400 transition-colors">
+              {item.name}
+            </h3>
+          </div>
+
+          <p className="text-zinc-500 text-sm leading-relaxed line-clamp-2 mb-8 flex-grow">
+            {item.subtitle}
+          </p>
+
+          <div className="flex items-center gap-2 text-zinc-400 group-hover:text-white transition-colors">
+             <span className="text-[10px] font-bold uppercase tracking-[0.2em]">Full Recognition</span>
+             <FiArrowRight className="text-purple-500 group-hover:translate-x-2 transition-transform h-3 w-3" />
+          </div>
+        </div>
+      </motion.div>
+    </Link>
+  );
+};
+
 const AchievementsPreview = () => {
   return (
-    <section className="py-24 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-32 relative bg-[#09090b]">
+      {/* Decorative vertical line */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0.5 h-32 bg-gradient-to-t from-purple-500/30 to-transparent" />
 
-        <div className="flex justify-between items-end mb-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
-              Milestones & <span className="text-purple-400">Honors</span>
-            </h2>
-            <p className="text-zinc-400 max-w-xl">
-              A growing collection of certifications, academic achievements, and competitive victories.
-            </p>
-          </motion.div>
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        
+        <div className="grid lg:grid-cols-[1fr_1.5fr] gap-12 items-end mb-20 text-left">
+           <motion.div
+             initial={{ opacity: 0, x: -20 }}
+             whileInView={{ opacity: 1, x: 0 }}
+             viewport={{ once: true }}
+             transition={{ duration: 0.8 }}
+           >
+             <h2 className="text-4xl md:text-6xl font-black tracking-tighter leading-none mb-6">
+               Milestones <br />
+               <span className="text-zinc-500/20 font-sans tracking-tight">& Honors</span>
+             </h2>
+             <div className="w-16 h-1 bg-purple-500" />
+           </motion.div>
 
-          <Link href="/achievements" className="hidden md:flex items-center gap-2 text-zinc-400 hover:text-purple-400 transition-colors group">
-            View All
-            <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
-          </Link>
+           <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 text-left">
+              <p className="text-zinc-400 text-lg max-w-md leading-relaxed">
+                A non-exhaustive list of professional recognitions and competitive victories that define my technical journey.
+              </p>
+              <Link href="/achievements" className="group flex items-center gap-4 text-white text-xs font-bold uppercase tracking-widest hover:text-purple-400 transition-all border-b border-zinc-800 pb-2">
+                All Achievements
+                <FiArrowRight className="group-hover:translate-x-2 transition-transform" />
+              </Link>
+           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {topAchievements.map((item, i) => (
-            <Link key={item.id} href={`/achievements/${item.id}`}>
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="bg-zinc-900/30 border border-zinc-800 rounded-2xl overflow-hidden hover:border-purple-600/50 transition-all group cursor-pointer h-full flex flex-col"
-              >
-                <div className="w-full h-48 bg-zinc-800 relative overflow-hidden">
-                  {item.bannerImage ? (
-                    <img src={item.bannerImage} alt={item.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center text-zinc-600"><FiAward size={32} /></div>
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-transparent to-transparent pointer-events-none" />
-                  <span className="absolute top-4 right-4 text-xs font-semibold px-3 py-1 bg-black/60 backdrop-blur-md text-zinc-300 rounded-full border border-zinc-700/50">
-                    {item.type}
-                  </span>
-                </div>
-                <div className="p-5">
-                  <h3 className="text-lg font-bold text-white group-hover:text-purple-400 transition-colors mb-1 line-clamp-1">{item.name}</h3>
-                  <p className="text-sm text-zinc-400 line-clamp-1 mb-2">{item.subtitle}</p>
-                  <span className="text-xs text-zinc-500">{item.date}</span>
-                </div>
-              </motion.div>
-            </Link>
+            <AchievementCard key={item.id} item={item} index={i} />
           ))}
         </div>
-
-        <div className="mt-8 flex justify-center md:hidden">
-          <Link href="/achievements" className="flex items-center gap-2 text-zinc-400 hover:text-purple-400 transition-colors group">
-            View All Achievements
-            <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
-          </Link>
-        </div>
-
       </div>
     </section>
   );
