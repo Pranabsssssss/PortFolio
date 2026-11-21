@@ -1,28 +1,86 @@
-# Pranab Saini Portfolio
+# Pranab Saini — Portfolio
 
-Next.js portfolio deployed to Cloudflare Workers with the OpenNext Cloudflare adapter.
+Personal portfolio for **Pranab Saini**, a student tech founder building projects across AI, robotics, and IoT.
 
-## Development
+The site presents selected projects, project details, achievements, and ways to get in touch. It is built with Next.js and deployed to Cloudflare Workers using the OpenNext Cloudflare adapter.
+
+**Live site:** [pranab.tech](https://www.pranab.tech)
+
+## Features
+
+- Responsive portfolio with project and achievement pages
+- Animated interface, smooth scrolling, and interactive visual elements
+- Project and achievement content stored in JSON files under `src/data`
+- Cloudflare Workers deployment using OpenNext
+
+## Tech stack
+
+- [Next.js](https://nextjs.org/) 16 and React 19
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Framer Motion](https://motion.dev/) and [Three.js](https://threejs.org/)
+- [OpenNext for Cloudflare](https://opennext.js.org/cloudflare/) and [Wrangler](https://developers.cloudflare.com/workers/wrangler/)
+
+## Run locally
+
+Use Node.js 20.9 or newer.
 
 ```bash
-npm install
+git clone https://github.com/Pranabsssssss/PortFolio.git
+cd PortFolio
+npm ci
 npm run dev
 ```
 
-## Preview the Cloudflare build
+Open [http://localhost:3000](http://localhost:3000) to view the site. Edit files in `src/app` and `src/components`; the development server reloads changes automatically.
+
+## Build and preview
+
+Create the production Next.js build:
+
+```bash
+npm run build
+```
+
+Preview the app using the Cloudflare Workers runtime:
 
 ```bash
 npm run preview
 ```
 
-## Deploy
+## Deploy to Cloudflare
 
-Authenticate Wrangler with `npx wrangler login`, then run:
+This app uses the OpenNext adapter for **Cloudflare Workers** to support Next.js server rendering and route handlers. It is not configured as a static Cloudflare Pages export.
+
+For Cloudflare Workers Builds, configure:
+
+| Setting | Command |
+| --- | --- |
+| Build command | `npx opennextjs-cloudflare build` |
+| Deploy command | `npx opennextjs-cloudflare deploy` |
+
+To deploy from a local terminal, authenticate Wrangler and run:
 
 ```bash
+npx wrangler login
 npm run deploy
 ```
 
-The deployment target is Cloudflare Workers. OpenNext's Cloudflare adapter runs the Next.js server and route handlers on Workers; Cloudflare Pages is intended for static Next.js exports.
+The Worker name is `portfolio` (configured in `wrangler.jsonc`). Configure any required secrets in Cloudflare rather than committing them to the repository.
 
-Set any required runtime secrets in the Cloudflare dashboard or with Wrangler. Do not commit credentials or local `.env` files.
+## Project structure
+
+```text
+src/
+  app/          Next.js routes and layouts
+  components/   Shared page and UI components
+  data/         Project and achievement content
+public/         Static assets
+```
+
+## Contact
+
+- Website: [pranab.tech](https://www.pranab.tech)
+- Email: [i@pranab.tech](mailto:i@pranab.tech)
+- GitHub: [@pranabsssssss](https://github.com/pranabsssssss)
+- LinkedIn: [Pranab Saini](https://www.linkedin.com/in/pranab-saini-616386388/)
