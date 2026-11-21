@@ -4,7 +4,7 @@ Personal portfolio for **Pranab Saini**, a student tech founder building project
 
 The site presents selected projects, project details, achievements, and ways to get in touch. It is built with Next.js and deployed to Cloudflare Workers using the OpenNext Cloudflare adapter.
 
-**Live site:** [pranab.tech](https://www.pranab.tech)
+**Live site:** [www.pranab.space](https://www.pranab.space)
 
 ## Features
 
@@ -80,7 +80,7 @@ public/         Static assets
 
 ## Contact
 
-- Website: [pranab.tech](https://www.pranab.tech)
+- Website: [www.pranab.space](https://www.pranab.space)
 - Email: [i@pranab.tech](mailto:i@pranab.tech)
 - GitHub: [@pranabsssssss](https://github.com/pranabsssssss)
 - LinkedIn: [Pranab Saini](https://www.linkedin.com/in/pranab-saini-616386388/)

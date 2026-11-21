@@ -27,7 +27,7 @@ const serifFont = Bodoni_Moda({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.pranab.tech"),
+  metadataBase: new URL("https://www.pranab.space"),
   title: "Pranab Saini | Student Tech Founder",
   description: "Portfolio of Pranab Saini, a Student Tech Founder building AI, Robotics, and IoT systems.",
 };
